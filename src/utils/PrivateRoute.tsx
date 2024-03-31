@@ -3,11 +3,10 @@ import { Navigate, Outlet } from "react-router-dom";
 
 interface PrivateRouteProps {
   to: string;
+  isAuthenticated: boolean;
 }
 
-const PrivateRoute: FC<PrivateRouteProps> = ({ to }) => {
-  const isAuthenticated = true;
-
+const PrivateRoute: FC<PrivateRouteProps> = ({ to, isAuthenticated }) => {
   return isAuthenticated ? <Outlet /> : <Navigate to={to} replace />;
 };
 
