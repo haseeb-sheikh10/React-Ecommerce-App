@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import AdminRoutes from "./layouts/admin/AdminRoutes";
 import ClientRoutes from "./layouts/client/ClientRoutes";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { fetchConfig } from "./redux/globalAction";
 import { useAppDispatch } from "./redux/store";
 
@@ -12,10 +12,12 @@ function App() {
     dispatch(fetchConfig());
   }, [dispatch]);
   return (
+    // <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route index path="/*" element={<ClientRoutes />} />
       <Route path="/admin/*" element={<AdminRoutes />} />
     </Routes>
+    // </Suspense>
   );
 }
 
